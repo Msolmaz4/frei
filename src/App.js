@@ -1,19 +1,36 @@
 import React from 'react';
 import './App.css';
-import Add from './Add';
-import Products from './components/Products';
-import {ContextProvider} from './context/ProductContext'
+import Add from './pages/Add';
+import Main from './pages/Main'
+import Detail from './pages/Detail';
+
+import { BrowserRouter as Router,Routes ,Route} from 'react-router-dom'
+import Update from './pages/Update';
+import {ProProvider } from './Context/ProContext'
 
 
 
 function App() {
   return (
     <div className="App">
-    <ContextProvider>
+  <ProProvider> 
+   
+  <Router>
+        <Routes>
+         <Route path='/' element={<Main/>}/>
+         <Route path='/add' element={<Add/>}/>
+         <Route path='/detail/:id' element={<Detail/>}/>
+         <Route path='/update/:id' element={<Update/>}/>
+        </Routes>
+      </Router>
 
-    <Add/>
-       <Products/>
-    </ContextProvider>
+
+
+  </ProProvider>
+      
+    
+
+    
 
 
      
