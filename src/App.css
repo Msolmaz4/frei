@@ -2,13 +2,19 @@ button{
   background-color: blue;
   color:white;
   display: flex;
-  justify-content: center;
+  float: left;
+  margin-right: 20px;
+
   
 }
 .product{
   display: flex;
   justify-content: center;
-  width:70px;
+  
   margin:100px auto;
   flex-wrap: wrap;
+}
+.product-cart{
+  width: 300px;
+  margin:2rem;
 }

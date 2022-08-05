@@ -9,14 +9,14 @@ import ProductCart from '../components/ProductCart'
 // butondan biryere gondermek  icib useNvigatekullaniriy
 //mapdan sonra ? isateri uyunluk sifir olunca hata verir genelde koymak gerekir
 const Main = () => {
-    const {erst}= useContext(ProContext)
+    const {erst ,dele}= useContext(ProContext)
     const deli = useNavigate()
 
   return (
     <div>
   <button  onClick={()=>deli('/add')}> basalim baba</button>
 
-    <div className='product'></div>
+    <div className='product'>
     {
       erst.map((er)=>(
 
@@ -27,6 +27,7 @@ const Main = () => {
         
       ))
     }
+    </div>
     </div>
   )
 }
