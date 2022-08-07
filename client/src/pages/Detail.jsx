@@ -1,7 +1,9 @@
 import React ,{ useContext ,useState ,useEffect} from 'react'
-import { ProContext} from '../Context/ProContext'
+//import { ProContext} from '../Context/ProContext'
 import { Link, useNavigate, useParams} from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
+import axios from 'axios';
+
 
 
 
@@ -9,26 +11,45 @@ import Card from 'react-bootstrap/Card';
 //{} icine alirsak direk kullariniy yPMAZSAK OBJE OLARAK GEELRT
 const Detail = () => {
  
-   const { erst,dele } = useContext(ProContext)
+   //const { erst,dele } = useContext(ProContext)
    const {id }= useParams()
    const dp = useNavigate()
    
    
   const [ dete ,setExt] = useState({})
 
-  useEffect (()=>{
-    
-     const b = erst.filter(a=>a.id === id)
-     setExt(b[0])
-    
-  },[])
+// useEffect (()=>{
+//  const b = erst.filter(a=>a.id === id)
+//   setExt(b[0]) 
+//},[])
+
+// .then(res=>console.log(res))
+const getPro = ()=>{
+  axios.get(`/product/${id}`)
+  .then(res=>setExt(res.data.data))
+  .catch(err => console.log(err))
+}
+
+useEffect(()=>{
+
+  getPro()
+},[])
 
 
-  const deleItem = ()=>{
-    dele(id)
-    dp('/')
 
-  }
+//backende baglanamdasn once
+  //const deleItem = ()=>{
+  // dele(id)
+  //  dp('/')
+  //}
+
+ const deleItem = ()=>{
+   axios.delete(`/products/product/${id}`)
+   .then(res =>dp('/'))
+  .catch(err =>alert(err))
+ }
+
+
   return (
     <div>
 
