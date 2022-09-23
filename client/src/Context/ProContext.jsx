@@ -56,7 +56,7 @@ export const ProProvider = (props)=>{
     }
 
     const dele = (id) =>{
-      const d = erst.find(er=>er.id != id)
+      const d = erst.find(er=>er.id !== id)
       setErste(d)
     }
 
